@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro Fibonacci</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .fibonacci-tree {
+            list-style-type: none;
+            padding: 0;
+        }
+        .fibonacci-node {
+            margin: 10px 0;
+            border: 1px solid #555;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+        }
+        input[type="text"] {
+            background-color: #444;
+            border: 1px solid #555;
+            color: white;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            width: calc(100% - 12px); /* Ajuste para evitar overflow */
+        }
+        .title-input {
+            font-weight: bold;
+            width: 100%;
+            border: none;
+            background: none;
+            color: #ffffff;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quadro de Habilidades</h1>
+    <ul class="fibonacci-tree">
+        <li class="fibonacci-node">
+            <input type="text" class="title-input" value="1 - Habilidade">
+            <input type="text" value="Assunto 1">
+        </li>
+        <li class="fibonacci-node">
+            <input type="text" class="title-input" value="2 - Habilidade">
+            <input type="text" value="Assunto 1">
+            <input type="text" value="Assunto 2">
+        </li>
+        <li class="fibonacci-node">
+            <input type="text" class="title-input" value="3 - Habilidade">
+            <input type="text" value="Assunto 1">
+            <input type="text" value="Assunto 2">
+            <input type="text" value="Assunto 3">
+        </li>
+        <li class="fibonacci-node">
+            <input type="text" class="title-input" value="5 - Nova Habilidade">
+            <input type="text" value="Assunto 1">
+            <input type="text" value="Assunto 2">
+            <input type="text" value="Assunto 3">
+            <input type="text" value="Assunto 4">
+            <input type="text" value="Assunto 5">
+        </li>
+        <li class="fibonacci-node">
+            <input type="text" class="title-input" value="8 - Nova Habilidade">
+            <input type="text" value="Assunto 1">
+            <input type="text" value="Assunto 2">
+            <input type="text" value="Assunto 3">
+            <input type="text" value="Assunto 4">
+            <input type="text" value="Assunto 5">
+            <input type="text" value="Assunto 6">
+            <input type="text" value="Assunto 7">
+            <input type="text" value="Assunto 8">
+        </li>
+    </ul>
+
+    <script>
+        // Função para detectar alterações nos inputs e salvar dados se necessário
+        const inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                console.log(`Valor atualizado: ${input.value}`);
+                // Aqui você pode salvar o novo valor, se necessário
+            });
+        });
+    </script>
+</body>
+</html>
