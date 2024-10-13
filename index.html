@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quadro Fibonacci</title>
+    <title>Quadro de Habilidades</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,7 +81,7 @@
     </ul>
 
     <script>
-        // Função para salvar os dados nos cookies
+        // Função para salvar os dados no Local Storage
         function saveData() {
             const nodes = document.querySelectorAll('.fibonacci-node');
             let data = {};
@@ -93,16 +93,18 @@
                 data[`habilidade_${index + 1}`] = { title: titleInput, subjects: subjects };
             });
 
-            // Salva os dados como string JSON em um cookie
-            document.cookie = `fibonacciData=${JSON.stringify(data)}; path=/; max-age=${60 * 60 * 24 * 30}`; // 30 dias
-            console.log("Dados salvos nos cookies:", data);
+            // Salva os dados como string JSON no Local Storage
+            localStorage.setItem('fibonacciData', JSON.stringify(data));
+            console.log("Dados salvos no Local Storage:", data);
+
+            // Envia os dados para o aplicativo pai
+            window.parent.postMessage(data, "*"); // Substitua "*" pela URL do seu aplicativo se necessário
         }
 
-        // Função para carregar os dados dos cookies
+        // Função para carregar os dados do Local Storage
         function loadData() {
-            const cookieData = document.cookie.split('; ').find(row => row.startsWith('fibonacciData='));
-            if (cookieData) {
-                const data = JSON.parse(cookieData.split('=')[1]);
+            const data = JSON.parse(localStorage.getItem('fibonacciData'));
+            if (data) {
                 Object.keys(data).forEach((key, index) => {
                     const node = document.querySelectorAll('.fibonacci-node')[index];
                     node.querySelector('.title-input').value = data[key].title;
